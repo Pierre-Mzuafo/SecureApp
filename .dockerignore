@@ -1,0 +1,22 @@
+# Environnements virtuels
+venv/
+.env
+
+# Fichiers Python inutiles
+__pycache__/
+*.pyc
+
+# Tests (pas en production)
+tests/
+
+# Cache pip
+pip-cache/
+.cache/
+
+# Git
+.git/
+.gitignore
+
+# OS files
+Thumbs.db
+.DS_Store
