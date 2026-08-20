@@ -1,7 +1,7 @@
+from datetime import datetime, timezone
+
 from fastapi import FastAPI, HTTPException, status
 from pydantic import BaseModel, Field
-from datetime import datetime, timezone
-from typing import Optional
 
 app = FastAPI(
     title="SecureApp API",
@@ -11,10 +11,10 @@ app = FastAPI(
 
 # Modèle Pydantic
 class Item(BaseModel):
-    id: Optional[int] = None
+    id: int | None = None
     name: str = Field(..., min_length=1, max_length=100)
-    description: Optional[str] = Field(None, max_length=500)
-    created_at: Optional[datetime] = None
+    description: str | None = Field(None, max_length=500)
+    created_at: datetime | None = None
 
 # Base de données en mémoire
 items_db = {}
@@ -56,4 +56,3 @@ def delete_item(item_id: int):
     if item_id not in items_db:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Item not found")
     del items_db[item_id]
-    return None
