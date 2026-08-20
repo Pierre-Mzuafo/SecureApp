@@ -40,17 +40,17 @@ jobs:
       - run: pip-audit
 
   docker:
-  runs-on: ubuntu-latest
-  steps:
-    - uses: actions/checkout@v4
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
 
-    - name: Build Docker image
-      run: docker build -t secureapp .
+      - name: Build Docker image
+        run: docker build -t secureapp .
 
-    - name: Install Trivy
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y trivy
+      - name: Install Trivy
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y trivy
 
-    - name: Scan Docker image
-      run: trivy image secureapp --exit-code 1 --severity CRITICAL
+      - name: Scan Docker image
+        run: trivy image secureapp --exit-code 1 --severity CRITICAL
