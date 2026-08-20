@@ -39,7 +39,7 @@ jobs:
       - run: bandit -r app
       - run: pip-audit
 
- docker:
+  docker:
   runs-on: ubuntu-latest
   steps:
     - uses: actions/checkout@v4
